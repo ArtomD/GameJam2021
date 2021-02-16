@@ -20,6 +20,9 @@ public class CameraControl : MonoBehaviour
     [SerializeField]
     private Camera camera;
     private float cameraRotation;
+    private bool cameraRotated;
+
+    private float gravityStrenght;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +32,9 @@ public class CameraControl : MonoBehaviour
         turnedRight = false;
         turnedLeft = false;
         cameraRotation = 0;
+        cameraRotated = false;
+        gravityStrenght = 9.8f;
+        
     }
 
     // Update is called once per frame
@@ -82,17 +88,17 @@ public class CameraControl : MonoBehaviour
         {
             if(rightTimer + 0.2f < Time.time && !shiftDown)
             {
-                turnCamera(continuousStep);
+                turnCamera(continuousStep, false);
             }else if (!turnedRight)
             {
                 if (shiftDown)
                 {
-                    turnCamera(shiftStep);
+                    turnCamera(shiftStep, true);
                     roundRoationTo90();
                 }
                 else
                 {
-                    turnCamera(oneStep);
+                    turnCamera(oneStep, false);
                 }
                 turnedRight = true;
             }
@@ -102,26 +108,29 @@ public class CameraControl : MonoBehaviour
         {
             if (leftTimer + 0.2f < Time.time && !shiftDown)
             {
-                turnCamera(-continuousStep);
+                turnCamera(-continuousStep, false);
             }
             else if (!turnedLeft)
             {
                 if (shiftDown)
                 {
-                    turnCamera(-shiftStep);
+                    turnCamera(-shiftStep,true);
                     roundRoationTo90();
                 }
                 else
                 {
-                    turnCamera(-oneStep);                    
+                    turnCamera(-oneStep, false);                    
                 }
                 turnedLeft = true;
             }
         }
-        camera.gameObject.transform.eulerAngles = new Vector3(0, 0, cameraRotation);
+        if (cameraRotated)
+        {
+            synchCameraAndGravity();
+        }        
     }
 
-    private void turnCamera(float amount)
+    private void turnCamera(float amount, bool round)
     {
         cameraRotation += amount;
         if(cameraRotation > 359)
@@ -131,6 +140,11 @@ public class CameraControl : MonoBehaviour
         {
             cameraRotation = 360 + cameraRotation;
         }        
+        if (round)
+        {
+            roundRoationTo90();
+        }
+        cameraRotated = true;
     }    
 
     private void roundRoationTo90()
@@ -150,6 +164,15 @@ public class CameraControl : MonoBehaviour
         {
             cameraRotation = 0;
         }
-        Debug.Log(cameraRotation);
+        synchCameraAndGravity();
+    }
+
+    private void synchCameraAndGravity()
+    {
+        Vector3 downDirection = -camera.transform.up * gravityStrenght;
+        Debug.Log(downDirection);
+        Physics2D.gravity = downDirection;
+        camera.gameObject.transform.eulerAngles = new Vector3(0, 0, cameraRotation);
+        cameraRotated = false;
     }
 }
