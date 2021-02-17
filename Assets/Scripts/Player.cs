@@ -35,14 +35,20 @@ public class Player : MonoBehaviour
     {        
         float thrust = Input.GetAxis("Horizontal") * rollSpeed;
 
-        if (Mathf.Abs(Input.GetAxis("Horizontal")) < 0.01f)
-            thrust *= Mathf.Pow(1f - fHorizontalDampingWhenStopping, Time.deltaTime * 10.0f);
-        else if (Mathf.Abs(Input.GetAxis("Horizontal")) != Mathf.Sign(thrust))
-            thrust *= Mathf.Pow(1f - fHorizontalDampingWhenTurning, Time.deltaTime * 10.0f);
-        else
-            thrust *= Mathf.Pow(1f - fHorizontalDampingBasic, Time.deltaTime * 10.0f);
+        if (thrust != 0)
+        {
+            rigidBody.velocity = new Vector2(thrust, rigidBody.velocity.y);
+            if (Mathf.Abs(Input.GetAxis("Horizontal")) < 0.01f)
+                thrust *= Mathf.Pow(1f - fHorizontalDampingWhenStopping, Time.deltaTime * 10.0f);
+            else if (Mathf.Abs(Input.GetAxis("Horizontal")) != Mathf.Sign(thrust))
+                thrust *= Mathf.Pow(1f - fHorizontalDampingWhenTurning, Time.deltaTime * 10.0f);
+            else
+                thrust *= Mathf.Pow(1f - fHorizontalDampingBasic, Time.deltaTime * 10.0f);
+        }
+            
 
-        rigidBody.velocity = new Vector2(thrust, rigidBody.velocity.y);
+        
+        
     }
 
     private void Jump()
@@ -57,8 +63,7 @@ public class Player : MonoBehaviour
 
         if (rigidBody.IsTouchingLayers(LayerMask.GetMask("Foreground")))
         {
-            groundedMemory = groundedMemoryThreshold;
-            Debug.Log("Here");
+            groundedMemory = groundedMemoryThreshold;            
         }
             
 
