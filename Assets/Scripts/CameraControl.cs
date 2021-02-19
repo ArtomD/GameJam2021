@@ -35,7 +35,7 @@ public class CameraControl : MonoBehaviour
         cameraRotation = 0;
         cameraRotated = false;
         gravityStrenght = 9.8f;
-
+        //synchCameraAndGravity();
     }
 
     // Update is called once per frame
