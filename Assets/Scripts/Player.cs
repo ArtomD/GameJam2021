@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,11 @@ public class Player : MonoBehaviour
     [SerializeField] float fHorizontalDampingWhenStopping = 0.2f;
     [SerializeField] float fHorizontalDampingWhenTurning = 0.2f;
     [SerializeField] float fHorizontalDampingBasic = 0.2f;
+    
+    [SerializeField] float health = 1.0f;
+
+    [SerializeField]
+    private CinemachineVirtualCamera camera;
 
     float jumpKeyDownMemory = 0;
     float groundedMemory = 0;
@@ -21,7 +27,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rigidBody = GetComponent<Rigidbody2D>();
+        rigidBody = GetComponent<Rigidbody2D>();        
     }
 
     // Update is called once per frame
@@ -34,10 +40,23 @@ public class Player : MonoBehaviour
     private void Roll()
     {        
         float thrust = Input.GetAxis("Horizontal") * rollSpeed;
-
+        
         if (thrust != 0)
         {
-            rigidBody.velocity = new Vector2(thrust, rigidBody.velocity.y);
+            Debug.Log(thrust);
+            //rigidBody.velocity = new Vector2(thrust, rigidBody.velocity.y);
+
+            /*  Debug.Log((gameObject.transform.right * thrust).x);
+              Debug.Log((gameObject.transform.right * thrust).y);
+              rigidBody.velocity += new Vector2((gameObject.transform.right * thrust).x, (gameObject.transform.right * thrust).y);*/
+
+            Debug.Log("UP" + gameObject.transform.up);
+            Debug.Log("RIGHT" + gameObject.transform.right);
+
+            //rigidBody.velocity = new Vector2((gameObject.transform.right * thrust).x, (gameObject.transform.up * rigidBody.velocity).y);
+            rigidBody.velocity = new Vector2((gameObject.transform.right * thrust).x + (gameObject.transform.up * rigidBody.velocity).x, (gameObject.transform.right * thrust).y + (gameObject.transform.up * rigidBody.velocity).y);
+                       
+
             if (Mathf.Abs(Input.GetAxis("Horizontal")) < 0.01f)
                 thrust *= Mathf.Pow(1f - fHorizontalDampingWhenStopping, Time.deltaTime * 10.0f);
             else if (Mathf.Abs(Input.GetAxis("Horizontal")) != Mathf.Sign(thrust))
@@ -72,6 +91,15 @@ public class Player : MonoBehaviour
             
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpVelocity);
             
+        }
+    }
+
+    public void Hurt(float damage)
+    {
+        this.health = this.health - damage;
+        if (this.health <= 0)
+        {
+            Debug.Log("game over");
         }
     }
 }

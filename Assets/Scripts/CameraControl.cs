@@ -20,6 +20,7 @@ public class CameraControl : MonoBehaviour
 
     [SerializeField]
     private CinemachineVirtualCamera camera;
+    [SerializeField] private GameObject player;
     private float cameraRotation;
     private bool cameraRotated;
 
@@ -177,6 +178,7 @@ public class CameraControl : MonoBehaviour
         Debug.Log(downDirection);
         Physics2D.gravity = downDirection;
         camera.transform.eulerAngles = new Vector3(0, 0, cameraRotation);
+        player.transform.eulerAngles = new Vector3(0, 0, cameraRotation);
         //camera.gameObject.transform.eulerAngles = new Vector3(0, 0, cameraRotation);
         cameraRotated = false;
     }
