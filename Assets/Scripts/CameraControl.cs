@@ -19,8 +19,8 @@ public class CameraControl : MonoBehaviour
     private float shiftStep = 90;
 
     [SerializeField]
-    private CinemachineVirtualCamera camera;
-    [SerializeField] private GameObject player;
+    private GameObject map;
+    //private CinemachineVirtualCamera camera;
     private float cameraRotation;
     private bool cameraRotated;
 
@@ -174,11 +174,10 @@ public class CameraControl : MonoBehaviour
 
     private void synchCameraAndGravity()
     {
-        Vector3 downDirection = -camera.transform.up * gravityStrenght;
-        Debug.Log(downDirection);
-        Physics2D.gravity = downDirection;
-        camera.transform.eulerAngles = new Vector3(0, 0, cameraRotation);
-        player.transform.eulerAngles = new Vector3(0, 0, cameraRotation);
+
+        //Physics2D.gravity = downDirection;
+        map.transform.eulerAngles = new Vector3(0, 0, cameraRotation);
+        //player.transform.eulerAngles = new Vector3(0, 0, cameraRotation);
         //camera.gameObject.transform.eulerAngles = new Vector3(0, 0, cameraRotation);
         cameraRotated = false;
     }
