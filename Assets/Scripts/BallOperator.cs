@@ -127,7 +127,8 @@ namespace Game.Jam
 
         public void Die()
         {
-
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<SplatterSpawner>().deathSplatter();
         }
 
         private bool isGrounded(float length)

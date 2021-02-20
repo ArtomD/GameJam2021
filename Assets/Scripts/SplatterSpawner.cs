@@ -11,6 +11,7 @@ public class SplatterSpawner : MonoBehaviour
     private float delay;
     [SerializeField]
     private GameObject map;
+    private bool isDead;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,13 +19,14 @@ public class SplatterSpawner : MonoBehaviour
         lastSpawn = 0;
         delay = 0;
         timer = 0;
+        isDead = false;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         Debug.Log(rb.velocity.magnitude);
-        if (rb.velocity.magnitude > 1)
+        if (!isDead && rb.velocity.magnitude > 1)
         {
             if (lastSpawn + delay < Time.time)
             {
@@ -36,6 +38,18 @@ public class SplatterSpawner : MonoBehaviour
                 splatterInstance.spawnSprite(rb.velocity.magnitude);
                 splatterInstance.transform.parent = map.transform;
             }
+        }
+    }
+
+    public void deathSplatter()
+    {
+        isDead = true;
+        for (int i =0;i<15;i++) {
+            float offsetX = (Random.value - 0.5f) * 4f;
+            float OffsetY = (Random.value - 0.5f) * 4f;
+            SplatterController splatterInstance = (SplatterController)Instantiate(splatter, new Vector3(transform.position.x + offsetX, transform.position.y + OffsetY, transform.position.z), transform.rotation);
+            splatterInstance.spawnSprite(15);
+            splatterInstance.transform.parent = map.transform;
         }
     }
 }
