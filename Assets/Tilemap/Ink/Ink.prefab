@@ -125,6 +125,16 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: -4, y: -1, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 9
+      m_TileSpriteIndex: 9
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: 0, y: -1, z: 0}
     second:
       serializedVersion: 2
@@ -365,7 +375,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: b8152599e05cded42a534113629dc434, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: fe9183bb9696b034b802a5a919f2649e, type: 2}
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: cb7f387c18814324a98dd537d1ca623a, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: f7a3843109d687c49aec92621a73fd82, type: 2}
@@ -398,7 +408,7 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: 64adfa3a834e00a4c9dab21c2118bab7, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: 8be7b50e85f48514289a33cc4ca3b9ec, type: 3}
-  - m_RefCount: 1
+  - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: 611b1fba121ced14395f1de1f57cf30c, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: e7b87fba07a54b94bb2fef33efb63a44, type: 3}
@@ -413,7 +423,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 80369f7b6f742da448d6f5fab16cd863, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 26
+  - m_RefCount: 27
     m_Data:
       e00: 1
       e01: 0
@@ -432,7 +442,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 26
+  - m_RefCount: 27
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -506,7 +516,7 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
---- !u!114 &5935474891664523888
+--- !u!114 &5310143628479646047
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

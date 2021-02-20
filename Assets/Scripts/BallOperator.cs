@@ -38,7 +38,7 @@ namespace Game.Jam
         void Update()
         {
             Jump();
-            Roll();
+            Roll();            
         }
 
         private void Roll()
@@ -81,15 +81,20 @@ namespace Game.Jam
 
         private void Jump()
         {
+            
             jumpKeyDownMemory -= Time.deltaTime;
             groundedMemory -= Time.deltaTime;
+
+            
 
             if (Input.GetButtonDown("Jump"))
                 jumpKeyDownMemory = jumpMemoryThreshold;
 
 
 
-            if (rigidBody.IsTouchingLayers(LayerMask.GetMask("Foreground")))
+            
+            
+            if (this.isGrounded())
             {
                 groundedMemory = groundedMemoryThreshold;
             }
@@ -112,6 +117,13 @@ namespace Game.Jam
             {
                 Debug.Log("game over");
             }
+        }
+
+        private bool isGrounded()
+        {                        
+            RaycastHit2D raycast = Physics2D.Raycast(gameObject.GetComponent<CircleCollider2D>().bounds.center, Vector2.down, gameObject.GetComponent<CircleCollider2D>().bounds.extents.y + 0.1f, LayerMask.GetMask("Foreground"));            
+            return raycast.collider != null;
+            //return rigidBody.IsTouchingLayers(LayerMask.GetMask("Foreground"));
         }
     }
 }
