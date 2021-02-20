@@ -24,8 +24,7 @@ public class SplatterSpawner : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate()
-    {
-        Debug.Log(rb.velocity.magnitude);
+    {        
         if (!isDead && rb.velocity.magnitude > 1)
         {
             if (lastSpawn + delay < Time.time)

@@ -204,13 +204,10 @@ public class MapOperator : MonoBehaviour
 
     private void turnMap(float angle)
     {
-        Debug.Log(time);
-        Debug.Log(lastRotate);
-        Debug.Log(lastRotate + refreshRate);
-
+        
         if (time >= lastRotate + refreshRate)
         {
-            Debug.Log(true);
+        
             map.transform.RotateAround(camera.transform.position, Vector3.forward, angle * Time.deltaTime);
             lastRotate = time;
         }
@@ -220,7 +217,7 @@ public class MapOperator : MonoBehaviour
 
     private void shiftTurn(bool clockwise)
     {
-        Debug.Log(map.transform.localEulerAngles);
+        
         if (clockwise)
         {
             map.transform.RotateAround(pivotPoint.position, Vector3.forward, 90 - (map.transform.localEulerAngles.z % 90));

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2457427387321703134}
   - component: {fileID: 5953395096551978254}
   - component: {fileID: 420272028207652125}
+  - component: {fileID: 1045339959}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -116,13 +117,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8eda8941e2af0a4783eeee3d3c8fa86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rollSpeed: 2
+  photonView: {fileID: 0}
+  rollSpeed: 3
   jumpVelocity: 6
   jumpMemoryThreshold: 0.2
-  groundedMemoryThreshold: 0.2
   fHorizontalDampingWhenStopping: 0.2
   fHorizontalDampingWhenTurning: 0.2
   fHorizontalDampingBasic: 0.2
+  groundedMemoryThreshold: 0.2
+  health: 1
+  camera: {fileID: 0}
 --- !u!50 &699693802441763116
 Rigidbody2D:
   serializedVersion: 4
@@ -139,7 +143,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1196a6a049bf3eb42b0d63260eec6b90, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -200,3 +204,17 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 0
+--- !u!114 &1045339959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7228307395466721417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 497d51f3d99c3a248aded3272d7329c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splatter: {fileID: 621015186815251597, guid: 29853bad6f7f1ad4c82a4d383d9a616f, type: 3}
+  map: {fileID: 0}
