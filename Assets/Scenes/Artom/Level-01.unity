@@ -1559,6 +1559,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1116831342}
   - component: {fileID: 1116831341}
+  - component: {fileID: 1116831343}
   m_Layer: 0
   m_Name: MapRotator
   m_TagString: Untagged
@@ -1573,7 +1574,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1116831340}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d2a71bdec387a847b5c874627b6e633, type: 3}
   m_Name: 
@@ -1595,6 +1596,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1116831343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116831340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7bc0bec591041f40a99cb96b2bbd9ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 1634932216}
 --- !u!4 &1185379407 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 830285464657119891, guid: 6538d6a329fa11f4f9f5fedbb8fee36d, type: 3}
