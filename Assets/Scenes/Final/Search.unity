@@ -180,7 +180,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Start
+  m_text: Searching for players...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ded25094d19bf47489269a76e7b3d11e, type: 2}
   m_sharedMaterial: {fileID: 2986241658182103951, guid: ded25094d19bf47489269a76e7b3d11e, type: 2}
@@ -594,7 +594,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -131}
+  m_AnchoredPosition: {x: 0, y: -249}
   m_SizeDelta: {x: 200, y: 70.9205}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1831627533
@@ -617,7 +617,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Option
+  m_text: Try it alone
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ded25094d19bf47489269a76e7b3d11e, type: 2}
   m_sharedMaterial: {fileID: 2986241658182103951, guid: ded25094d19bf47489269a76e7b3d11e, type: 2}
