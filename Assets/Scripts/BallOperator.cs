@@ -5,8 +5,14 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] float rollSpeed = 0.1f;
-    [SerializeField] float jumpVelocity = 0.1f;
+    public class BallOperator : MonoBehaviour
+    {
+        public PhotonView photonView;
+        [SerializeField] float rollSpeed = 0.1f;
+        [SerializeField] float jumpVelocity = 0.1f;
+
+        [SerializeField] float jumpMemoryThreshold = 0.2f;
+        [SerializeField] float groundedMemoryThreshold = 0.2f;
 
     [SerializeField] float jumpMemoryThreshold = 0.2f;
     [SerializeField] float groundedMemoryThreshold = 0.2f;
