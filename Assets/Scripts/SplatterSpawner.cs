@@ -51,4 +51,17 @@ public class SplatterSpawner : MonoBehaviour
             splatterInstance.transform.parent = map.transform;
         }
     }
+
+    public void winSplatter()
+    {
+        isDead = true;
+        for (int i = 0; i < 25; i++)
+        {
+            float offsetX = (Random.value - 0.5f) * 7f;
+            float OffsetY = (Random.value - 0.5f) * 7f;
+            SplatterController splatterInstance = (SplatterController)Instantiate(splatter, new Vector3(transform.position.x + offsetX, transform.position.y + OffsetY, transform.position.z), transform.rotation);
+            splatterInstance.spawnSprite(18);
+            splatterInstance.transform.parent = map.transform;
+        }
+    }
 }

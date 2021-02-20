@@ -24,6 +24,7 @@ namespace Game.Jam
             BallOperator player = otherObject.gameObject.GetComponent<BallOperator>();
             if (player != null)
             {
+                player.Win();
                 levelController.Win();
             }
         }

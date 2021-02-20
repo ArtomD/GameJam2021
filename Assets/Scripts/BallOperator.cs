@@ -133,6 +133,15 @@ namespace Game.Jam
 
         }
 
+        public void Win()
+        {
+            
+            dead = true;
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<SplatterSpawner>().winSplatter();
+            gameObject.GetComponent<Rigidbody2D>().simulated = false;
+        }
+
         private bool isGrounded(float length)
         {                        
             RaycastHit2D raycast = Physics2D.Raycast(gameObject.GetComponent<CircleCollider2D>().bounds.center, -camera.gameObject.transform.up, gameObject.GetComponent<CircleCollider2D>().bounds.extents.y + length, LayerMask.GetMask("Foreground"));
