@@ -22,8 +22,16 @@ public class MapOperator : MonoBehaviour
     private GameObject map;
     [SerializeField]
     private CinemachineVirtualCamera camera;
+    private float time = 0;
+
+    [SerializeField] float cameraTurnSpeed = 1.0f;
+    private float lastRotate = 0;
     [SerializeField]
     private GameObject player;
+
+    [SerializeField]
+    private float refreshRate = 0.017f;
+
     private float cameraRotation;
     private bool cameraRotated;
 
@@ -42,11 +50,13 @@ public class MapOperator : MonoBehaviour
         cameraRotated = false;
         gravityStrenght = 9.8f;
         pivotPoint = camera.transform;
+        time = Time.deltaTime;        
     }
 
     // Update is called once per frame
     void Update()
     {
+        time = time + Time.deltaTime;
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             shiftDown = true;
@@ -96,16 +106,19 @@ public class MapOperator : MonoBehaviour
         {
             pivotPoint = player.transform;
         }
+
+        FU();
     }
 
-    void FixedUpdate()
+    void FU()
     {
         if (turnRight)
         {
             if (shiftDown)
             {
 
-                if (!turnedRight) {
+                if (!turnedRight)
+                {
                     shiftTurn(true);
                     turnedRight = true;
                 }
@@ -113,10 +126,11 @@ public class MapOperator : MonoBehaviour
             }
             else
             {
-                turnMap(100f);
+                turnMap(cameraTurnSpeed);
+                
             }
         }
-        
+
         if (turnLeft)
         {
             if (shiftDown)
@@ -131,10 +145,11 @@ public class MapOperator : MonoBehaviour
             }
             else
             {
-                turnMap(-100f);
+                turnMap(-cameraTurnSpeed);
+                
             }
         }
-        
+
     }
 
     private void turnCamera(float amount, bool round)
@@ -189,8 +204,18 @@ public class MapOperator : MonoBehaviour
 
     private void turnMap(float angle)
     {
-                //map.transform.RotateAround(camera.transform.position, Vector3.forward, angle * Time.deltaTime);
-        map.transform.eulerAngles = new Vector3(0, 0, map.transform.eulerAngles.z + (angle * Time.deltaTime));
+        Debug.Log(time);
+        Debug.Log(lastRotate);
+        Debug.Log(lastRotate + refreshRate);
+
+        if (time >= lastRotate + refreshRate)
+        {
+            Debug.Log(true);
+            map.transform.RotateAround(camera.transform.position, Vector3.forward, angle);
+            lastRotate = time;
+        }
+            
+        //map.transform.eulerAngles = new Vector3(0, 0, map.transform.eulerAngles.z + (angle * Time.deltaTime));
     }
 
     private void shiftTurn(bool clockwise)

@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Artom/Level-01.unity
+    guid: 1e0f611644954b647ae1e3cbadd7de83
+  - enabled: 1
     path: Assets/Scenes/Cory/Lobby.unity
     guid: 5183e00782a723a40878aa1104dc4016
   - enabled: 1
