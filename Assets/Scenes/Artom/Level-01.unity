@@ -384,12 +384,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 141839490}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.0295, y: -11.1275, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.5895, y: -11.1275, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 836566184}
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &162347579
 GameObject:
@@ -1138,6 +1138,7 @@ Transform:
   - {fileID: 1698533133}
   - {fileID: 560625974}
   - {fileID: 592950013}
+  - {fileID: 141839492}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1578,6 +1579,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splatter: {fileID: 621015186815251597, guid: 29853bad6f7f1ad4c82a4d383d9a616f, type: 3}
+  map: {fileID: 836566182}
 --- !u!4 &1069890912 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1714762065390102767, guid: aa30c15feaf77f34ea3144c23dde9456, type: 3}
