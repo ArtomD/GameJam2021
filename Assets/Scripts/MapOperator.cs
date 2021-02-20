@@ -211,7 +211,7 @@ public class MapOperator : MonoBehaviour
         if (time >= lastRotate + refreshRate)
         {
             Debug.Log(true);
-            map.transform.RotateAround(camera.transform.position, Vector3.forward, angle);
+            map.transform.RotateAround(camera.transform.position, Vector3.forward, angle * Time.deltaTime);
             lastRotate = time;
         }
             
