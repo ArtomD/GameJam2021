@@ -29,12 +29,11 @@ namespace Game.Jam
         private float gravityStrength;
 
 
-        private Vector3 downDirection;
+        private Vector3 downDirection = new Vector3(0, -9.8, 0);
         void Awake()
         {
             photonView = gameObject.GetComponent<PhotonView>();
             camera = gameObject.GetComponent<Camera>();
-            downDirection = new Vector3(0, -1 * gravityStrength, 0);
             // camera.enabled = true;
         }
 
