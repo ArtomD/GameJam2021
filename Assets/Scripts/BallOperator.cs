@@ -121,8 +121,13 @@ namespace Game.Jam
             this.health = this.health - damage;
             if (this.health <= 0)
             {
-                Debug.Log("game over");
+                Die();
             }
+        }
+
+        public void Die()
+        {
+
         }
 
         private bool isGrounded(float length)
