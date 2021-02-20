@@ -60,6 +60,8 @@ public class Player : MonoBehaviour
             Vector3 thrustVector = (camera.transform.right * thrust);
             rigidBody.velocity = Physics2D.gravity.normalized * (Vector2.Dot(rigidBody.velocity, Physics2D.gravity) / Physics2D.gravity.magnitude) + new Vector2(thrustVector.x, thrustVector.y);
 
+
+
             if (Mathf.Abs(Input.GetAxis("Horizontal")) < 0.01f)
                 thrust *= Mathf.Pow(1f - fHorizontalDampingWhenStopping, Time.deltaTime * 10.0f);
             else if (Mathf.Abs(Input.GetAxis("Horizontal")) != Mathf.Sign(thrust))
