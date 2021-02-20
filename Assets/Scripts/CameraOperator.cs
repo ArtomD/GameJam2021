@@ -52,7 +52,7 @@ namespace Game.Jam
         // Update is called once per frame
         void Update()
         {
-            if (photonView.IsMine)
+            if (photonView!= null && photonView.IsMine)
             {
                 CheckInput();
             }
