@@ -6,12 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Cory/Lobby.unity
-    guid: 5183e00782a723a40878aa1104dc4016
+    path: Assets/Scenes/Final/Start.unity
+    guid: 6e98b4a8eb31abd4e8e55a9126bdb418
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Final/Search.unity
+    guid: 967fe017e856724499c6f22180104ea4
   - enabled: 1
-    path: Assets/Scenes/Cory/Multiplayer.unity
-    guid: 208a2102d883b1247a932209c2c3d66e
+    path: Assets/Scenes/Final/Instructions.unity
+    guid: 3c2ac9c8dadf56741aef033d37503ced
+  - enabled: 1
+    path: Assets/Scenes/Final/Game.unity
+    guid: bcae136a57ddf7447b2a8f857fb30ca9
   m_configObjects: {}
