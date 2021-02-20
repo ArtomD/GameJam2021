@@ -12,12 +12,16 @@ namespace Game.Jam
         [SerializeField] float rollSpeed = 0.1f;
         [SerializeField] float jumpVelocity = 0.1f;
 
-        [SerializeField] float jumpMemoryThreshold = 0.2f;
-        [SerializeField] float groundedMemoryThreshold = 0.2f;
+        [SerializeField] float jumpMemoryThreshold = 0.2f;        
 
         [SerializeField] float fHorizontalDampingWhenStopping = 0.2f;
         [SerializeField] float fHorizontalDampingWhenTurning = 0.2f;
         [SerializeField] float fHorizontalDampingBasic = 0.2f;
+
+        float yVelocityTracker = 0.0f;
+        float timeSinceGrounded = 0.0f;
+        float groundedMemoryThreshold = 0.1f;
+        float groundedRayLength = 0.05f;
 
         [SerializeField] float health = 1.0f;
 
@@ -38,40 +42,41 @@ namespace Game.Jam
         void Update()
         {
             Jump();
-            Roll();            
+            Roll();
+            
+            maintainVelociry();
         }
 
+        private void maintainVelociry()
+        {            
+            if (isGrounded(groundedRayLength))            
+                timeSinceGrounded = 0;            
+            else            
+                timeSinceGrounded += Time.deltaTime;
+            
+            if (yVelocityTracker < rigidBody.velocity.y)
+            {                
+                if(timeSinceGrounded > groundedMemoryThreshold)                                    
+                    rigidBody.velocity = new Vector2(rigidBody.velocity.x, yVelocityTracker);
+                else
+                {
+                    yVelocityTracker = rigidBody.velocity.y;
+                }
+            }
+            else            
+                yVelocityTracker = rigidBody.velocity.y;
+            
+            
+        }
         private void Roll()
         {
             float thrust = Input.GetAxis("Horizontal") * rollSpeed;
 
             if (thrust != 0)
             {
-                //Debug.Log(thrust);
-                //rigidBody.velocity = new Vector2(thrust, rigidBody.velocity.y);
-
-                /*  Debug.Log((gameObject.transform.right * thrust).x);
-                  Debug.Log((gameObject.transform.right * thrust).y);
-                  rigidBody.velocity += new Vector2((gameObject.transform.right * thrust).x, (gameObject.transform.right * thrust).y);*/
-
-                //Debug.Log("UP" + gameObject.transform.up);
-                //Debug.Log("RIGHT" + gameObject.transform.right);
-
-                //rigidBody.velocity = new Vector2((gameObject.transform.right * thrust).x, (gameObject.transform.up * rigidBody.velocity).y);
-                //rigidBody.velocity = new Vector2((gameObject.transform.right * thrust).x + (gameObject.transform.up * rigidBody.velocity).x, (gameObject.transform.right * thrust).y + (gameObject.transform.up * rigidBody.velocity).y);
-
-
-                Vector3 thrustVector = (camera.transform.right * thrust);
-                rigidBody.velocity = Physics2D.gravity.normalized * (Vector2.Dot(rigidBody.velocity, Physics2D.gravity) / Physics2D.gravity.magnitude) + new Vector2(thrustVector.x, thrustVector.y);
-
-
-
-                if (Mathf.Abs(Input.GetAxis("Horizontal")) < 0.01f)
-                    thrust *= Mathf.Pow(1f - fHorizontalDampingWhenStopping, Time.deltaTime * 10.0f);
-                else if (Mathf.Abs(Input.GetAxis("Horizontal")) != Mathf.Sign(thrust))
-                    thrust *= Mathf.Pow(1f - fHorizontalDampingWhenTurning, Time.deltaTime * 10.0f);
-                else
-                    thrust *= Mathf.Pow(1f - fHorizontalDampingBasic, Time.deltaTime * 10.0f);
+                
+                    rigidBody.velocity = new Vector2(thrust, rigidBody.velocity.y);                                    
+                
             }
 
 
@@ -94,7 +99,7 @@ namespace Game.Jam
 
             
             
-            if (this.isGrounded())
+            if (this.isGrounded(groundedRayLength))
             {
                 groundedMemory = groundedMemoryThreshold;
             }
@@ -119,11 +124,10 @@ namespace Game.Jam
             }
         }
 
-        private bool isGrounded()
+        private bool isGrounded(float length)
         {                        
-            RaycastHit2D raycast = Physics2D.Raycast(gameObject.GetComponent<CircleCollider2D>().bounds.center, Vector2.down, gameObject.GetComponent<CircleCollider2D>().bounds.extents.y + 0.1f, LayerMask.GetMask("Foreground"));            
-            return raycast.collider != null;
-            //return rigidBody.IsTouchingLayers(LayerMask.GetMask("Foreground"));
+            RaycastHit2D raycast = Physics2D.Raycast(gameObject.GetComponent<CircleCollider2D>().bounds.center, Vector2.down, gameObject.GetComponent<CircleCollider2D>().bounds.extents.y + length, LayerMask.GetMask("Foreground"));            
+            return raycast.collider != null;            
         }
     }
 }
