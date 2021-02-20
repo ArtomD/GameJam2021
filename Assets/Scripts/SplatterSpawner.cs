@@ -9,7 +9,6 @@ public class SplatterSpawner : MonoBehaviour
     private float timer;
     private float lastSpawn;
     private float delay;
-
     [SerializeField]
     private GameObject map;
     // Start is called before the first frame update
