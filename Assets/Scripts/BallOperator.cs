@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Game.Jam
 {
-    public class Player : MonoBehaviour
+    public class BallOperator : MonoBehaviour
     {
         public PhotonView photonView;
         [SerializeField] float rollSpeed = 0.1f;
