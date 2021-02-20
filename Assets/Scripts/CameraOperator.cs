@@ -22,7 +22,7 @@ namespace Game.Jam
         private float continuousStep = 3;
         private float shiftStep = 90;
 
-        private Camera camera;
+        public GameObject camera;
         private float cameraRotation;
         private bool cameraRotated;
 
@@ -33,7 +33,7 @@ namespace Game.Jam
         void Awake()
         {
             photonView = gameObject.GetComponent<PhotonView>();
-            camera = gameObject.GetComponent<Camera>();
+            camera = gameObject;
             // camera.enabled = true;
         }
 
@@ -47,7 +47,6 @@ namespace Game.Jam
             cameraRotation = 0;
             cameraRotated = false;
             gravityStrength = 9.8f;
-
         }
 
         // Update is called once per frame
@@ -147,7 +146,7 @@ namespace Game.Jam
             }
             if (cameraRotated)
             {
-                synchCameraAndGravity();
+                SyncCameraAndGravity();
             }
         }
 
@@ -187,10 +186,10 @@ namespace Game.Jam
             {
                 cameraRotation = 0;
             }
-            synchCameraAndGravity();
+            SyncCameraAndGravity();
         }
 
-        private void synchCameraAndGravity()
+        private void SyncCameraAndGravity()
         {
 
             camera.transform.eulerAngles = new Vector3(0, 0, cameraRotation);

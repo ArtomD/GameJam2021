@@ -17,7 +17,6 @@ namespace Game.Jam
         public GameObject Player2SpawnPosition;
 
 
-        private Camera camera;
         void Start()
         {
             if (!PhotonNetwork.IsConnected) // 1
@@ -38,7 +37,6 @@ namespace Game.Jam
                 {
                     Debug.Log("Instantiating Player 2");
                     P2 = PhotonNetwork.Instantiate("Camera", Player2SpawnPosition.transform.position, Player2SpawnPosition.transform.rotation, 0);
-                    camera = FindObjectOfType<Camera>();
                 }
             }
         }
