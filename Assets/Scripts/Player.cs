@@ -91,10 +91,10 @@ public class Player : MonoBehaviour
 
         if (jumpKeyDownMemory > 0 && groundedMemory > 0)
         {
-            Vector3 thrustVector = (camera.transform.up * jumpVelocity);
-            rigidBody.velocity = Physics2D.gravity.normalized * (Vector2.Dot(rigidBody.velocity, Physics2D.gravity) / Physics2D.gravity.magnitude) + new Vector2(thrustVector.x, thrustVector.y);
+            //Vector3 thrustVector = (camera.transform.up * jumpVelocity);
+            //rigidBody.velocity = Physics2D.gravity.normalized * (Vector2.Dot(rigidBody.velocity, Physics2D.gravity) / Physics2D.gravity.magnitude) + new Vector2(thrustVector.x, thrustVector.y);
 
-            //rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpVelocity);
+            rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpVelocity);
             
         }
     }
