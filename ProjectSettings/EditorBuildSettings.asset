@@ -4,14 +4,5 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/Cory/Lobby.unity
-    guid: 5183e00782a723a40878aa1104dc4016
-  - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/Cory/Multiplayer.unity
-    guid: 208a2102d883b1247a932209c2c3d66e
+  m_Scenes: []
   m_configObjects: {}

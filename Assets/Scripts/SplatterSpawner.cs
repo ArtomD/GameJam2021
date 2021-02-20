@@ -9,6 +9,9 @@ public class SplatterSpawner : MonoBehaviour
     private float timer;
     private float lastSpawn;
     private float delay;
+
+    [SerializeField]
+    private GameObject map;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +35,7 @@ public class SplatterSpawner : MonoBehaviour
                 float OffsetY = (Random.value - 0.5f) * 0.65f;
                 SplatterController splatterInstance = (SplatterController)Instantiate(splatter, new Vector3(transform.position.x + offsetX, transform.position.y + OffsetY, transform.position.z), transform.rotation);
                 splatterInstance.spawnSprite(rb.velocity.magnitude);
+                splatterInstance.transform.parent = map.transform;
             }
         }
     }
