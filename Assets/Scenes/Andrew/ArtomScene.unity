@@ -128,7 +128,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2944221962454986938, guid: 11d8868f6468c394392997a089787adc, type: 3}
   m_PrefabInstance: {fileID: 2944221963365933211}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1398143350}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
@@ -6378,9 +6378,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8c165208386cce44b3ac3d7d4b34b66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  map: {fileID: 955562525}
-  camera: {fileID: 28983690}
-  player: {fileID: 982982261}
+  photonView: {fileID: 0}
+  camera: {fileID: 1398143350}
 --- !u!4 &826170136
 Transform:
   m_ObjectHideFlags: 0
@@ -6441,10 +6440,10 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &982982261 stripped
+--- !u!1 &1398143350 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 7228307395466721417, guid: eded435bc43d0bd4588ba46a41905804, type: 3}
-  m_PrefabInstance: {fileID: 7228307395720291169}
+  m_CorrespondingSourceObject: {fileID: 2944221962454986884, guid: 11d8868f6468c394392997a089787adc, type: 3}
+  m_PrefabInstance: {fileID: 2944221963365933211}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2944221963365933211
 PrefabInstance:
