@@ -24,21 +24,20 @@ namespace Game.Jam
                 SceneManager.LoadScene(0); return;
             }
 
-            if (PlayerManager.LocalPlayerInstance == null)
-            {
-                if (PhotonNetwork.IsMasterClient) // 2
-                {
-                    Debug.Log("Instantiating Player 1");
-                    // 3
-                    P1 = PhotonNetwork.Instantiate("Ball", Player1SpawnPosition.transform.position, Player1SpawnPosition.transform.rotation, 0);
 
-                }
-                else // 5
-                {
-                    Debug.Log("Instantiating Player 2");
-                    P2 = PhotonNetwork.Instantiate("Camera", Player2SpawnPosition.transform.position, Player2SpawnPosition.transform.rotation, 0);
-                }
+            if (PhotonNetwork.IsMasterClient) // 2
+            {
+                Debug.Log("Instantiating Player 1");
+                // 3
+                P1 = PhotonNetwork.Instantiate("BallOperator", Player1SpawnPosition.transform.position, Player1SpawnPosition.transform.rotation, 0);
+
             }
+            else // 5
+            {
+                Debug.Log("Instantiating Player 2");
+                P2 = PhotonNetwork.Instantiate("MapOperator", Player2SpawnPosition.transform.position, Player2SpawnPosition.transform.rotation, 0);
+            }
+
         }
 
         void Update()

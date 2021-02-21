@@ -1247,7 +1247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LoadingBar: {fileID: 168888962}
   TextIndicator: {fileID: 256471646}
-  StartTimer: 5
+  StartTimer: 2
 --- !u!1 &1380672385
 GameObject:
   m_ObjectHideFlags: 0
