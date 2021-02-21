@@ -13,7 +13,8 @@ public class MusicManager : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(this.gameObject);
-        musicSource = Utils.AddAudioNoFalloff(gameObject, menuMuisc, true, false, 1, 1);
+        musicSource = Utils.AddAudioNoFalloff(gameObject, menuMuisc, true, false, 0.4f, 1);
+        musicSource.Play();
     }
 
     // Update is called once per frame
