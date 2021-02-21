@@ -24,7 +24,7 @@ namespace Game.Jam
         float yVelocityTracker = 0.0f;
         float timeSinceGrounded = 0.0f;
 
-        float groundedRayLength = 0.1f;
+        [SerializeField]  float groundedRayLength = 0.3f;
 
         private LevelController levelController;
 
@@ -40,7 +40,7 @@ namespace Game.Jam
         CircleCollider2D circleCollider;
 
         [SerializeField]
-        private AudioClip jump_clip;
+        private AudioClip[] jump_clip;
 
         private AudioSource jumpSource;
         // Start is called before the first frame update
@@ -52,7 +52,7 @@ namespace Game.Jam
             camera = FindObjectOfType<CinemachineVirtualCamera>();
             levelController = FindObjectOfType<LevelController>();
             camera.Follow = this.transform;
-            jumpSource = Utils.AddAudioNoFalloff(gameObject, jump_clip, false, false, 1, 1);
+            jumpSource = Utils.AddAudioNoFalloff(gameObject, jump_clip[0], false, false, 0.45f, 0.8f);
         }
 
         void Start()
@@ -144,6 +144,9 @@ namespace Game.Jam
 
                 rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpVelocity);
                 //camera.transform.TransformDirection(new Vector2(rigidBody.velocity.x, jumpVelocity));
+                int index = (int)(Random.value * jump_clip.Length);
+                if (index == jump_clip.Length) index = jump_clip.Length - 1;
+                jumpSource.clip = jump_clip[index];
                 jumpSource.Play();
             }
         }

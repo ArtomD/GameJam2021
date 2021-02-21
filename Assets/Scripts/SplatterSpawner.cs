@@ -45,7 +45,7 @@ public class SplatterSpawner : MonoBehaviour
             {
                 spraySource.Play();
             }
-            spraySource.volume = 0.7f + (rb.velocity.magnitude / 5);
+            spraySource.volume = 0.3f + Mathf.Min((rb.velocity.magnitude / 8),0.3f);
             spraySource.pitch = 0.7f + (rb.velocity.magnitude / 10);
             if (lastSpawn + delay < Time.time)
             {

@@ -125,9 +125,13 @@ MonoBehaviour:
   fHorizontalDampingWhenTurning: 0.2
   fHorizontalDampingBasic: 0.2
   groundedMemoryThreshold: 0.2
+  groundedRayLength: 0.3
   health: 1
   camera: {fileID: 0}
-  jump_clip: {fileID: 8300000, guid: 8fe438027027c4e40b810d75ded87224, type: 3}
+  jump_clip:
+  - {fileID: 8300000, guid: 8fe438027027c4e40b810d75ded87224, type: 3}
+  - {fileID: 8300000, guid: fe8b3f9fef3e1ef4d86a2a3e9cc54ab7, type: 3}
+  - {fileID: 8300000, guid: 80fc91ed348f8ad4eb29decde00ac316, type: 3}
 --- !u!50 &1782323757308194826
 Rigidbody2D:
   serializedVersion: 4
