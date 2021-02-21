@@ -1,10 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-
 using Photon.Pun;
 using Photon.Realtime;
-using Photon.Pun.Demo.PunBasics;
 
 namespace Game.Jam
 {
@@ -28,11 +25,10 @@ namespace Game.Jam
             if (PhotonNetwork.IsMasterClient) // 2
             {
                 Debug.Log("Instantiating Player 1");
-                // 3
                 P1 = PhotonNetwork.Instantiate("BallOperator", Player1SpawnPosition.transform.position, Player1SpawnPosition.transform.rotation, 0);
 
             }
-            else // 5
+            else
             {
                 Debug.Log("Instantiating Player 2");
                 P2 = PhotonNetwork.Instantiate("MapOperator", Player2SpawnPosition.transform.position, Player2SpawnPosition.transform.rotation, 0);
@@ -48,8 +44,17 @@ namespace Game.Jam
                 QuitApplication();
             }
         }
+
+
+        public void QuitToMenu()
+        {
+            PhotonNetwork.LeaveRoom();
+            PhotonNetwork.Disconnect();
+
+        }
         public void QuitApplication()
         {
+            PhotonNetwork.LeaveRoom();
             Application.Quit();
         }
         public override void OnDisconnected(DisconnectCause cause)
