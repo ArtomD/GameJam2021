@@ -15,23 +15,25 @@ namespace Game.Jam
         [SerializeField] GameObject losePanel;
         [SerializeField] TextMeshProUGUI timeText;
 
-        private Countdown exitCountdown;
+        [SerializeField] private Countdown gameOverCountdown;
+        [SerializeField] private Countdown victoryCountdown;
         private GameManager gameManager;
         bool gameOver = false;
 
         void Awake()
         {
             gameManager = FindObjectOfType<GameManager>();
-            exitCountdown = FindObjectOfType<Countdown>();
         }
 
         void OnEnable()
         {
-            exitCountdown.TimesUp += ForceExit;
+            gameOverCountdown.TimesUp += ForceExit;
+            victoryCountdown.TimesUp += ForceExit;
         }
         void OnDisable()
         {
-            exitCountdown.TimesUp -= ForceExit;
+            gameOverCountdown.TimesUp -= ForceExit;
+            victoryCountdown.TimesUp -= ForceExit;
         }
 
         void Update()
@@ -45,7 +47,7 @@ namespace Game.Jam
         {
             gameOver = true;
             winPanel.SetActive(true);
-            exitCountdown.BeginCountdown();
+            victoryCountdown.BeginCountdown();
 
         }
 
@@ -53,7 +55,7 @@ namespace Game.Jam
         {
             gameOver = true;
             losePanel.SetActive(true);
-            exitCountdown.BeginCountdown();
+            gameOverCountdown.BeginCountdown();
         }
 
         public void ForceExit()
