@@ -45,6 +45,7 @@ namespace Game.Jam
             rigidBody = GetComponent<Rigidbody2D>();
             circleCollider = gameObject.GetComponent<CircleCollider2D>();
             camera = FindObjectOfType<CinemachineVirtualCamera>();
+            camera.Follow = this.transform;
         }
 
         // Update is called once per frame
