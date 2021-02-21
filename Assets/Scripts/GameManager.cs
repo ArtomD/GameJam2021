@@ -46,12 +46,14 @@ namespace Game.Jam
         }
 
 
+
+
         public void QuitToMenu()
         {
             PhotonNetwork.LeaveRoom();
             PhotonNetwork.Disconnect();
-
         }
+
         public void QuitApplication()
         {
             PhotonNetwork.LeaveRoom();
@@ -69,7 +71,6 @@ namespace Game.Jam
             if (PhotonNetwork.IsMasterClient)
             {
                 Debug.LogFormat("OnPlayerEnteredRoom IsMasterClient {0}", PhotonNetwork.IsMasterClient); // called before OnPlayerLeftRoom
-
             }
         }
         public override void OnLeftRoom()
@@ -79,10 +80,6 @@ namespace Game.Jam
         }
 
 
-        public void LeaveRoom()
-        {
-            PhotonNetwork.LeaveRoom();
-        }
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
