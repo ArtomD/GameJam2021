@@ -28,14 +28,12 @@ namespace Game.Jam
         {
             gameOver = true;
             winPanel.SetActive(true);
-            PhotonNetwork.LeaveRoom();
         }
 
         public void Lose()
         {
             gameOver = true;
             losePanel.SetActive(true);
-            PhotonNetwork.LeaveRoom();
         }
     }
 }
