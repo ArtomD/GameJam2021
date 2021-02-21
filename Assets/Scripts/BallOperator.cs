@@ -24,7 +24,7 @@ namespace Game.Jam
         float yVelocityTracker = 0.0f;
         float timeSinceGrounded = 0.0f;
 
-        float groundedRayLength = 0.1f;
+        [SerializeField]  float groundedRayLength = 0.3f;
 
         private LevelController levelController;
 
