@@ -57,8 +57,6 @@ namespace Game.Jam
             StopAllCoroutines();
             StartCoroutine(UpdateColor(highlightColor));
             mouseoverSource.Play();
-            Debug.Log("ENTERD");
-
         }
 
         public void OnPointerExit(PointerEventData eventData)
