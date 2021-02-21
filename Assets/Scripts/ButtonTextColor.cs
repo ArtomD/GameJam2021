@@ -19,6 +19,12 @@ namespace Game.Jam
 
         private Button buttonObject;
 
+        [SerializeField]
+        private AudioClip button_mouseover;
+
+
+        private AudioSource mouseoverSource;
+
         public void Awake()
         {
             textObject = gameObject.GetComponentInChildren<TextMeshProUGUI>();
@@ -26,7 +32,7 @@ namespace Game.Jam
             baseColor = textObject.color;
             highlightColor = buttonObject.colors.highlightedColor;
             disabledColor = buttonObject.colors.disabledColor;
-
+            mouseoverSource = Utils.AddAudioNoFalloff(gameObject, button_mouseover, false, false, 0.6f, 1);
         }
 
         public void SetEnabled(bool enabled)
@@ -50,7 +56,8 @@ namespace Game.Jam
 
             StopAllCoroutines();
             StartCoroutine(UpdateColor(highlightColor));
-
+            mouseoverSource.Play();
+            Debug.Log("ENTERD");
 
         }
 

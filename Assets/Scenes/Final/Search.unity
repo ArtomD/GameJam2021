@@ -293,6 +293,10 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4281084972
       objectReference: {fileID: 0}
+    - target: {fileID: 920447863052012363, guid: db3fdd1597f3ae5478e679598b401613, type: 3}
+      propertyPath: button_mouseover
+      value: 
+      objectReference: {fileID: 8300000, guid: 1ab11335ef4002a46b1f30b0c282077d, type: 3}
     - target: {fileID: 920447863052012364, guid: db3fdd1597f3ae5478e679598b401613, type: 3}
       propertyPath: m_Colors.m_DisabledColor.a
       value: 1
