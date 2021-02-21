@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1782323757308194825}
   - component: {fileID: 1782323757308194824}
   - component: {fileID: 1782323757308194823}
+  - component: {fileID: 8672790574259740300}
   m_Layer: 0
   m_Name: BallOperator
   m_TagString: Untagged
@@ -203,6 +204,20 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 0
+--- !u!114 &8672790574259740300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782323757308194822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 497d51f3d99c3a248aded3272d7329c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splatter: {fileID: 621015186815251597, guid: 29853bad6f7f1ad4c82a4d383d9a616f, type: 3}
+  map: {fileID: 0}
 --- !u!114 &1045339959
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -20,11 +20,13 @@ public class SplatterSpawner : MonoBehaviour
         delay = 0;
         timer = 0;
         isDead = false;
+        map = GameObject.Find("/Map");
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
-    {        
+    {
         if (!isDead && rb.velocity.magnitude > 1)
         {
             if (lastSpawn + delay < Time.time)
@@ -43,7 +45,8 @@ public class SplatterSpawner : MonoBehaviour
     public void deathSplatter()
     {
         isDead = true;
-        for (int i =0;i<15;i++) {
+        for (int i = 0; i < 15; i++)
+        {
             float offsetX = (Random.value - 0.5f) * 4f;
             float OffsetY = (Random.value - 0.5f) * 4f;
             SplatterController splatterInstance = (SplatterController)Instantiate(splatter, new Vector3(transform.position.x + offsetX, transform.position.y + OffsetY, transform.position.z), transform.rotation);
