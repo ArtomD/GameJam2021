@@ -38,6 +38,11 @@ namespace Game.Jam
 
         Rigidbody2D rigidBody;
         CircleCollider2D circleCollider;
+
+        [SerializeField]
+        private AudioClip jump_clip;
+
+        private AudioSource jumpSource;
         // Start is called before the first frame update
         void Awake()
         {
@@ -47,7 +52,7 @@ namespace Game.Jam
             camera = FindObjectOfType<CinemachineVirtualCamera>();
             levelController = FindObjectOfType<LevelController>();
             camera.Follow = this.transform;
-
+            jumpSource = Utils.AddAudioNoFalloff(gameObject, jump_clip, false, false, 1, 1);
         }
 
         void Start()
@@ -139,7 +144,7 @@ namespace Game.Jam
 
                 rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpVelocity);
                 //camera.transform.TransformDirection(new Vector2(rigidBody.velocity.x, jumpVelocity));
-
+                jumpSource.Play();
             }
         }
 

@@ -127,6 +127,7 @@ MonoBehaviour:
   groundedMemoryThreshold: 0.2
   health: 1
   camera: {fileID: 0}
+  jump_clip: {fileID: 8300000, guid: 8fe438027027c4e40b810d75ded87224, type: 3}
 --- !u!50 &1782323757308194826
 Rigidbody2D:
   serializedVersion: 4
@@ -167,6 +168,7 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
+  - {fileID: 1782323757308194827}
   - {fileID: 1782323757308194824}
   - {fileID: 1782323757308194823}
   viewIdField: 0
@@ -218,6 +220,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   splatter: {fileID: 621015186815251597, guid: 29853bad6f7f1ad4c82a4d383d9a616f, type: 3}
   map: {fileID: 0}
+  spray_clip: {fileID: 8300000, guid: cb17741030575a340aff0c527a0a3ee2, type: 3}
+  explode_clip: {fileID: 8300000, guid: df765dff073221b4cb6bf782a61a8f47, type: 3}
 --- !u!114 &1045339959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,3 +236,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   splatter: {fileID: 621015186815251597, guid: 29853bad6f7f1ad4c82a4d383d9a616f, type: 3}
   map: {fileID: 0}
+  spray_clip: {fileID: 0}
+  explode_clip: {fileID: 0}

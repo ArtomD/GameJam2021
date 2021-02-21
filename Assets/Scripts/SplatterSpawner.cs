@@ -12,6 +12,16 @@ public class SplatterSpawner : MonoBehaviour
     [SerializeField]
     private GameObject map;
     private bool isDead;
+
+    [SerializeField]
+    private AudioClip spray_clip;
+    [SerializeField]
+    private AudioClip explode_clip;
+
+    private AudioSource spraySource;
+    private AudioSource explodeSource;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +32,8 @@ public class SplatterSpawner : MonoBehaviour
         isDead = false;
         map = GameObject.Find("/Map");
 
+        spraySource = Utils.AddAudioNoFalloff(gameObject, spray_clip, true, false, 1, 1);
+        explodeSource = Utils.AddAudioNoFalloff(gameObject, explode_clip, false, false, 1, 1);
     }
 
     // Update is called once per frame
@@ -29,6 +41,12 @@ public class SplatterSpawner : MonoBehaviour
     {
         if (!isDead && rb.velocity.magnitude > 1)
         {
+            if (!spraySource.isPlaying)
+            {
+                spraySource.Play();
+            }
+            spraySource.volume = 0.7f + (rb.velocity.magnitude / 5);
+            spraySource.pitch = 0.7f + (rb.velocity.magnitude / 10);
             if (lastSpawn + delay < Time.time)
             {
                 lastSpawn = Time.time;
@@ -38,6 +56,13 @@ public class SplatterSpawner : MonoBehaviour
                 SplatterController splatterInstance = (SplatterController)Instantiate(splatter, new Vector3(transform.position.x + offsetX, transform.position.y + OffsetY, transform.position.z), transform.rotation);
                 splatterInstance.spawnSprite(rb.velocity.magnitude);
                 splatterInstance.transform.parent = map.transform;
+            }
+        }
+        else
+        {
+            if (spraySource.isPlaying)
+            {
+                spraySource.Stop();
             }
         }
     }
@@ -53,6 +78,7 @@ public class SplatterSpawner : MonoBehaviour
             splatterInstance.spawnSprite(15);
             splatterInstance.transform.parent = map.transform;
         }
+        explodeSource.Play();
     }
 
     public void winSplatter()
