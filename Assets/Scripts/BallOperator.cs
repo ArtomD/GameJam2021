@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Game.Jam
 {
-    public class BallOperator : MonoBehaviour
+    public class BallOperator : MonoBehaviourPunCallbacks, IPunObservable
     {
         public PhotonView photonView;
         [SerializeField] float rollSpeed = 0.1f;
@@ -183,6 +183,21 @@ namespace Game.Jam
 
             Debug.DrawRay(circleCollider.bounds.center, -camera.gameObject.transform.up * (circleCollider.bounds.extents.y + length), color);
             return raycast.collider != null;
+        }
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            if (stream.IsWriting)
+            {
+                // We own this player: send the others our data
+                stream.SendNext(dead);
+            }
+            else
+            {
+                // Network player, receive data
+                this.dead = (bool)stream.ReceiveNext();
+
+
+            }
         }
     }
 }
