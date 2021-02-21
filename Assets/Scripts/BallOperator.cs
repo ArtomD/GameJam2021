@@ -50,6 +50,13 @@ namespace Game.Jam
 
         }
 
+        void Start()
+        {
+            if (photonView != null && !photonView.IsMine)
+            {
+                rigidBody.isKinematic = true;
+            }
+        }
         // Update is called once per frame
         void Update()
         {
