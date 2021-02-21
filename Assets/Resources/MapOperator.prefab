@@ -47,9 +47,9 @@ MonoBehaviour:
   photonView: {fileID: 0}
   map: {fileID: 0}
   camera: {fileID: 0}
-  cameraTurnSpeed: 100
+  cameraTurnSpeed: 50
   player: {fileID: 0}
-  refreshRate: 0.017
+  refreshRate: 0.0001
 --- !u!114 &2673950085183432445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,7 +68,8 @@ MonoBehaviour:
   observableSearch: 2
   Synchronization: 3
   OwnershipTransfer: 0
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 3704135376980601916}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
