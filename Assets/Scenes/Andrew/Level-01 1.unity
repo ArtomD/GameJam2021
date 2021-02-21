@@ -1834,11 +1834,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6538d6a329fa11f4f9f5fedbb8fee36d, type: 3}
---- !u!1 &1045339958 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7228307395466721417, guid: eded435bc43d0bd4588ba46a41905804, type: 3}
-  m_PrefabInstance: {fileID: 2131280519}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1069890912 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1714762065390102767, guid: aa30c15feaf77f34ea3144c23dde9456, type: 3}
@@ -1936,10 +1931,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2a71bdec387a847b5c874627b6e633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  photonView: {fileID: 0}
   map: {fileID: 836566182}
   camera: {fileID: 1634932216}
   cameraTurnSpeed: 100
-  player: {fileID: 1045339958}
+  player: {fileID: 0}
   refreshRate: 0.017
 --- !u!4 &1116831342
 Transform:
@@ -1967,7 +1963,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7bc0bec591041f40a99cb96b2bbd9ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shiftDown: 0
+  turnRight: 0
+  turnedRight: 0
+  turnLeft: 0
+  turnedLeft: 0
+  rightTimer: 0
+  leftTimer: 0
+  oneStep: 15
+  continuousStep: 3
+  shiftStep: 90
   camera: {fileID: 1634932216}
+  cameraRotation: 0
+  cameraRotated: 0
+  gravityStrenght: 0
 --- !u!4 &1185379407 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 830285464657119891, guid: 6538d6a329fa11f4f9f5fedbb8fee36d, type: 3}
@@ -2251,7 +2260,7 @@ PrefabInstance:
     - target: {fileID: 2944221962454986938, guid: 11d8868f6468c394392997a089787adc, type: 3}
       propertyPath: m_Follow
       value: 
-      objectReference: {fileID: 2131280520}
+      objectReference: {fileID: 0}
     - target: {fileID: 2944221962454986939, guid: 11d8868f6468c394392997a089787adc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.5657215
@@ -2386,8 +2395,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8c165208386cce44b3ac3d7d4b34b66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pvCache: {fileID: 0}
   photonView: {fileID: 0}
+  shiftDown: 0
+  turnRight: 0
+  turnedRight: 0
+  turnLeft: 0
+  turnedLeft: 0
+  rightTimer: 0
+  leftTimer: 0
+  oneStep: 15
+  continuousStep: 3
+  shiftStep: 90
   camera: {fileID: 0}
+  cameraRotation: 0
+  cameraRotated: 0
+  gravityStrength: 0
+  downDirection: {x: 0, y: -9.8, z: 0}
 --- !u!1 &1673514311
 GameObject:
   m_ObjectHideFlags: 0
@@ -21315,6 +21339,10 @@ PrefabInstance:
       propertyPath: map
       value: 
       objectReference: {fileID: 836566182}
+    - target: {fileID: 1782323757308194825, guid: eded435bc43d0bd4588ba46a41905804, type: 3}
+      propertyPath: viewIdField
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2457427387321703134, guid: eded435bc43d0bd4588ba46a41905804, type: 3}
       propertyPath: viewIdField
       value: 1
@@ -21375,7 +21403,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: eded435bc43d0bd4588ba46a41905804, type: 3}
 --- !u!4 &2131280520 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 7228307395466721421, guid: eded435bc43d0bd4588ba46a41905804, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1782323758369762744, guid: eded435bc43d0bd4588ba46a41905804, type: 3}
   m_PrefabInstance: {fileID: 2131280519}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2064084936770110182
