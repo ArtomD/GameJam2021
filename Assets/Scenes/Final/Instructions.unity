@@ -1179,8 +1179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ddf9a06e0b07b14b8dd355cf4ab5631, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  P1View: {fileID: 1101265576}
-  P2View: {fileID: 1874499508}
+  P1View: {fileID: 1874499508}
+  P2View: {fileID: 1101265576}
   StartCountdown: {fileID: 1287186695}
 --- !u!4 &1271408787
 Transform:

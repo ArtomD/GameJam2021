@@ -545,7 +545,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &170704698
 RectTransform:
@@ -1281,9 +1281,9 @@ Transform:
   - {fileID: 72724597}
   - {fileID: 1757069512}
   - {fileID: 286071407}
+  - {fileID: 1539048623}
   - {fileID: 2048338581}
   - {fileID: 1698533133}
-  - {fileID: 1539048623}
   - {fileID: 560625974}
   - {fileID: 592950013}
   m_Father: {fileID: 0}
@@ -2168,7 +2168,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 836566184}
-  m_RootOrder: 27
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1539048624
 SpriteRenderer:
