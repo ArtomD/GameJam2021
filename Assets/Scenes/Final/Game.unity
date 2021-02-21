@@ -545,7 +545,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &170704698
 RectTransform:
@@ -1281,9 +1281,9 @@ Transform:
   - {fileID: 72724597}
   - {fileID: 1757069512}
   - {fileID: 286071407}
+  - {fileID: 1539048623}
   - {fileID: 2048338581}
   - {fileID: 1698533133}
-  - {fileID: 1539048623}
   - {fileID: 560625974}
   - {fileID: 592950013}
   m_Father: {fileID: 0}
@@ -2168,7 +2168,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 836566184}
-  m_RootOrder: 27
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1539048624
 SpriteRenderer:
@@ -2395,40 +2395,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11d8868f6468c394392997a089787adc, type: 3}
---- !u!1 &1634932215 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2944221962502597620, guid: 11d8868f6468c394392997a089787adc, type: 3}
-  m_PrefabInstance: {fileID: 1634932214}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1634932217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1634932215}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8c165208386cce44b3ac3d7d4b34b66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pvCache: {fileID: 0}
-  photonView: {fileID: 0}
-  shiftDown: 0
-  turnRight: 0
-  turnedRight: 0
-  turnLeft: 0
-  turnedLeft: 0
-  rightTimer: 0
-  leftTimer: 0
-  oneStep: 15
-  continuousStep: 3
-  shiftStep: 90
-  camera: {fileID: 0}
-  cameraRotation: 0
-  cameraRotated: 0
-  gravityStrength: 0
-  downDirection: {x: 0, y: -9.8, z: 0}
 --- !u!1 &1673514311
 GameObject:
   m_ObjectHideFlags: 0
@@ -21371,7 +21337,15 @@ PrefabInstance:
     - target: {fileID: 1180800877086097251, guid: 43c7be61ff7cc8940a5ee0709a58bb83, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 354788345}
+      objectReference: {fileID: 602583230}
+    - target: {fileID: 1180800877086097251, guid: 43c7be61ff7cc8940a5ee0709a58bb83, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitToMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 1180800877086097251, guid: 43c7be61ff7cc8940a5ee0709a58bb83, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Game.Jam.GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2064084935444589763, guid: 43c7be61ff7cc8940a5ee0709a58bb83, type: 3}
       propertyPath: m_Name
       value: Winner Canvas
@@ -21669,6 +21643,14 @@ PrefabInstance:
     - target: {fileID: 9029088326119798218, guid: a92aefef80935f04cbbdabe75c6de891, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 354788345}
+      objectReference: {fileID: 602583230}
+    - target: {fileID: 9029088326119798218, guid: a92aefef80935f04cbbdabe75c6de891, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitToMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029088326119798218, guid: a92aefef80935f04cbbdabe75c6de891, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Game.Jam.GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a92aefef80935f04cbbdabe75c6de891, type: 3}

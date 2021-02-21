@@ -17,8 +17,6 @@ namespace Game.Jam
         void Awake()
         {
             PhotonNetwork.AutomaticallySyncScene = true;
-
-
         }
 
         void Start()
@@ -27,11 +25,19 @@ namespace Game.Jam
             ConnectToPhoton();
         }
 
+
         private void ConnectToPhoton()
         {
-            GameStatusText.SetText("Connecting", true);
-            PhotonNetwork.GameVersion = GameVersion;
-            PhotonNetwork.ConnectUsingSettings();
+            if (!PhotonNetwork.IsConnected)
+            {
+                GameStatusText.SetText("Connecting", true);
+                PhotonNetwork.GameVersion = GameVersion;
+                PhotonNetwork.ConnectUsingSettings();
+            }
+            else
+            {
+                OnConnectedToMaster();
+            }
         }
 
         private void JoinRoom()
