@@ -19,10 +19,14 @@ namespace Game.Jam
         [SerializeField] float fHorizontalDampingBasic = 0.2f;
         [SerializeField] float groundedMemoryThreshold = 0.1f;
 
+
+        private bool dead = false;
         float yVelocityTracker = 0.0f;
         float timeSinceGrounded = 0.0f;
         
         float groundedRayLength = 0.1f;
+
+        private LevelController levelController;
 
         [SerializeField] float health = 1.0f;
 
@@ -37,6 +41,7 @@ namespace Game.Jam
         void Start()
         {
             rigidBody = GetComponent<Rigidbody2D>();
+            levelController = FindObjectOfType<LevelController>();
         }
 
         // Update is called once per frame
@@ -72,7 +77,7 @@ namespace Game.Jam
         {
             float thrust = Input.GetAxis("Horizontal") * rollSpeed;
 
-            if (thrust != 0)
+            if (thrust != 0 && !dead)
             {                
                     rigidBody.velocity = new Vector2(thrust, rigidBody.velocity.y);         
             }
@@ -103,16 +108,9 @@ namespace Game.Jam
             }
 
 
-            if (jumpKeyDownMemory > 0 && groundedMemory > 0)
-            {
-                //Vector3 thrustVector = (camera.transform.up * jumpVelocity);
-                //rigidBody.velocity = Physics2D.gravity.normalized * (Vector2.Dot(rigidBody.velocity, Physics2D.gravity) / Physics2D.gravity.magnitude) + new Vector2(thrustVector.x, thrustVector.y);
-                Debug.Log(camera.transform.up);
-                //rigidBody.velocity = camera.transform.TransformDirection(new Vector2(camera.transform.TransformDirection(rigidBody.velocity).x, camera.transform.TransformDirection(0.0f, jumpVelocity, 0.0f).y));
-
-                rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpVelocity);
-                //camera.transform.TransformDirection(new Vector2(rigidBody.velocity.x, jumpVelocity));
-
+            if (jumpKeyDownMemory > 0 && groundedMemory > 0 && !dead)
+            { 
+               rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpVelocity);
             }
         }
 
@@ -121,8 +119,27 @@ namespace Game.Jam
             this.health = this.health - damage;
             if (this.health <= 0)
             {
-                Debug.Log("game over");
+                Die();
             }
+        }
+
+        public void Die()
+        {
+            dead = true;            
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<SplatterSpawner>().deathSplatter();
+            gameObject.GetComponent<Rigidbody2D>().simulated = false;
+            levelController.Lose();
+
+        }
+
+        public void Win()
+        {
+            
+            dead = true;
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<SplatterSpawner>().winSplatter();
+            gameObject.GetComponent<Rigidbody2D>().simulated = false;
         }
 
         private bool isGrounded(float length)
