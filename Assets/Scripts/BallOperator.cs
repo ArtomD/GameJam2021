@@ -196,7 +196,10 @@ namespace Game.Jam
                 // Network player, receive data
                 this.dead = (bool)stream.ReceiveNext();
 
-
+                if (this.dead)
+                {
+                    Die();
+                }
             }
         }
     }
