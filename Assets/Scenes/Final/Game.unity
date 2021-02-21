@@ -21322,6 +21322,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 602583230}
+    - target: {fileID: 1180800877086097252, guid: 43c7be61ff7cc8940a5ee0709a58bb83, type: 3}
+      propertyPath: button_mouseover
+      value: 
+      objectReference: {fileID: 8300000, guid: 1ab11335ef4002a46b1f30b0c282077d, type: 3}
     - target: {fileID: 2064084935444589763, guid: 43c7be61ff7cc8940a5ee0709a58bb83, type: 3}
       propertyPath: m_Name
       value: Winner Canvas
@@ -21600,5 +21604,9 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Game.Jam.GameManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 9029088326119798221, guid: a92aefef80935f04cbbdabe75c6de891, type: 3}
+      propertyPath: button_mouseover
+      value: 
+      objectReference: {fileID: 8300000, guid: 1ab11335ef4002a46b1f30b0c282077d, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a92aefef80935f04cbbdabe75c6de891, type: 3}
