@@ -23,7 +23,7 @@ public class CameraRotateControl : MonoBehaviour
     private float cameraRotation;
     private bool cameraRotated;
 
-    private float gravityStrenght;
+    private float gravityStrength;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +34,7 @@ public class CameraRotateControl : MonoBehaviour
         turnedLeft = false;
         cameraRotation = 0;
         cameraRotated = false;
-        gravityStrenght = 9.8f;
+        gravityStrength = 9.8f;
 
     }
 
@@ -173,7 +173,7 @@ public class CameraRotateControl : MonoBehaviour
 
     private void synchCameraAndGravity()
     {
-        Vector3 downDirection = -camera.transform.up * gravityStrenght;
+        Vector3 downDirection = -camera.transform.up * gravityStrength;
         Debug.Log(downDirection);
         Physics2D.gravity = downDirection;
         camera.transform.eulerAngles = new Vector3(0, 0, cameraRotation);
