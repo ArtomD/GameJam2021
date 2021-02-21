@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using TMPro;
 using UnityEngine;
 
@@ -14,33 +15,52 @@ namespace Game.Jam
         [SerializeField] GameObject losePanel;
         [SerializeField] TextMeshProUGUI timeText;
 
+        [SerializeField] private Countdown gameOverCountdown;
+        [SerializeField] private Countdown victoryCountdown;
+        private GameManager gameManager;
         bool gameOver = false;
 
-        // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
-
+            gameManager = FindObjectOfType<GameManager>();
         }
 
-        // Update is called once per frame
+        void OnEnable()
+        {
+            gameOverCountdown.TimesUp += ForceExit;
+            victoryCountdown.TimesUp += ForceExit;
+        }
+        void OnDisable()
+        {
+            gameOverCountdown.TimesUp -= ForceExit;
+            victoryCountdown.TimesUp -= ForceExit;
+        }
+
         void Update()
         {
-            if(!gameOver)
+            if (!gameOver)
                 timeText.text = "Time:" + Math.Round(Time.timeSinceLevelLoad, 1);
         }
 
-        
 
         public void Win()
         {
             gameOver = true;
             winPanel.SetActive(true);
+            victoryCountdown.BeginCountdown();
+
         }
 
         public void Lose()
         {
             gameOver = true;
             losePanel.SetActive(true);
+            gameOverCountdown.BeginCountdown();
+        }
+
+        public void ForceExit()
+        {
+            gameManager.QuitToMenu();
         }
     }
 }
