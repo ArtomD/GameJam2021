@@ -528,7 +528,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2540dd611790dbd4f94b5aad911b8e19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menuMuisc: {fileID: 8300000, guid: c9df7a2c936574146a38fab073087262, type: 3}
+  menuMuisc: {fileID: 8300000, guid: 2613869d141dc4140b004d433f8a03ac, type: 3}
+  volume: 0.3
 --- !u!4 &655876118
 Transform:
   m_ObjectHideFlags: 0

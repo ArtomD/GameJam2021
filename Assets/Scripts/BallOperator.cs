@@ -52,7 +52,7 @@ namespace Game.Jam
             camera = FindObjectOfType<CinemachineVirtualCamera>();
             levelController = FindObjectOfType<LevelController>();
             camera.Follow = this.transform;
-            jumpSource = Utils.AddAudioNoFalloff(gameObject, jump_clip[0], false, false, 0.45f, 0.8f);
+            jumpSource = Utils.AddAudioNoFalloff(gameObject, jump_clip[0], false, false, 0.2f, 0.7f);
         }
 
         void Start()

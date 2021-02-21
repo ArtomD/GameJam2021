@@ -224,7 +224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   splatter: {fileID: 621015186815251597, guid: 29853bad6f7f1ad4c82a4d383d9a616f, type: 3}
   map: {fileID: 0}
-  spray_clip: {fileID: 8300000, guid: ef6dcbbf110b1234183292e6687c17e0, type: 3}
+  spray_clip: {fileID: 8300000, guid: ab79315fa347d1f4497b6af00d73988d, type: 3}
   explode_clip: {fileID: 8300000, guid: df765dff073221b4cb6bf782a61a8f47, type: 3}
 --- !u!114 &1045339959
 MonoBehaviour:

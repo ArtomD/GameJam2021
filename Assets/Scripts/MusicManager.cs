@@ -9,6 +9,8 @@ public class MusicManager : MonoBehaviour
     [SerializeField]
     private AudioClip menuMuisc;
 
+    [SerializeField]
+    private float volume = 0.4f;
 
     private AudioSource musicSource;
     // Start is called before the first frame update
@@ -30,7 +32,7 @@ public class MusicManager : MonoBehaviour
 
     void Start()
     {
-        musicSource = Utils.AddAudioNoFalloff(gameObject, menuMuisc, true, false, 0.4f, 1);
+        musicSource = Utils.AddAudioNoFalloff(gameObject, menuMuisc, true, false, volume, 1);
         musicSource.Play();
     }
 

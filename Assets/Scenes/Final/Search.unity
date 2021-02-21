@@ -298,7 +298,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "We are finding you a friend to play with. \r\nYou can play alone but a
-    friends bring secret powers!"
+    friend bring secret powers!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ded25094d19bf47489269a76e7b3d11e, type: 2}
   m_sharedMaterial: {fileID: 2986241658182103951, guid: ded25094d19bf47489269a76e7b3d11e, type: 2}
