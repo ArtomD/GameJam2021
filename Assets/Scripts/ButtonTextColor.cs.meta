@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 50d5d2976cd3ec94fbdd30c4e3a2ac49
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - button_mouseover: {fileID: 8300000, guid: 1ab11335ef4002a46b1f30b0c282077d, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

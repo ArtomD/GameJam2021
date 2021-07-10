@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraControl : MonoBehaviour
+public class CameraRotateControl : MonoBehaviour
 {
 
     private bool shiftDown;
@@ -19,17 +19,11 @@ public class CameraControl : MonoBehaviour
     private float shiftStep = 90;
 
     [SerializeField]
-    private GameObject map;
-    [SerializeField]
     private CinemachineVirtualCamera camera;
-    [SerializeField]
-    private GameObject player;
     private float cameraRotation;
     private bool cameraRotated;
 
-    private float gravityStrenght;
-
-    private Transform pivotPoint;
+    private float gravityStrength;
 
     // Start is called before the first frame update
     void Start()
@@ -40,8 +34,8 @@ public class CameraControl : MonoBehaviour
         turnedLeft = false;
         cameraRotation = 0;
         cameraRotated = false;
-        gravityStrenght = 9.8f;
-        pivotPoint = camera.transform;
+        gravityStrength = 9.8f;
+
     }
 
     // Update is called once per frame
@@ -87,54 +81,55 @@ public class CameraControl : MonoBehaviour
             turnLeft = false;
             turnedLeft = false;
         }
-
-        if (Input.GetKeyDown(KeyCode.Equals))
-        {
-            pivotPoint = camera.transform;
-        }
-        if (Input.GetKeyDown(KeyCode.Minus))
-        {
-            pivotPoint = player.transform;
-        }
     }
 
     void FixedUpdate()
     {
         if (turnRight)
         {
-            if (shiftDown)
+            if (rightTimer + 0.2f < Time.time && !shiftDown)
             {
-
-                if (!turnedRight) {
-                    shiftTurn(true);
-                    turnedRight = true;
+                turnCamera(continuousStep, false);
+            }
+            else if (!turnedRight)
+            {
+                if (shiftDown)
+                {
+                    turnCamera(shiftStep, true);
+                    roundRoationTo90();
                 }
+                else
+                {
+                    turnCamera(oneStep, false);
+                }
+                turnedRight = true;
+            }
 
-            }
-            else
-            {
-                turnMap(100f);
-            }
         }
-        
         if (turnLeft)
         {
-            if (shiftDown)
+            if (leftTimer + 0.2f < Time.time && !shiftDown)
             {
-
-                if (!turnedLeft)
-                {
-                    shiftTurn(false);
-                    turnedLeft = true;
-                }
-
+                turnCamera(-continuousStep, false);
             }
-            else
+            else if (!turnedLeft)
             {
-                turnMap(-100f);
+                if (shiftDown)
+                {
+                    turnCamera(-shiftStep, true);
+                    roundRoationTo90();
+                }
+                else
+                {
+                    turnCamera(-oneStep, false);
+                }
+                turnedLeft = true;
             }
         }
-        
+        if (cameraRotated)
+        {
+            synchCameraAndGravity();
+        }
     }
 
     private void turnCamera(float amount, bool round)
@@ -178,38 +173,11 @@ public class CameraControl : MonoBehaviour
 
     private void synchCameraAndGravity()
     {
-
-        //Physics2D.gravity = downDirection;
-        map.transform.RotateAround(camera.transform.position, Vector3.forward, cameraRotation* Time.deltaTime);
-        //map.transform.eulerAngles = new Vector3(0, 0, cameraRotation);
-        //player.transform.eulerAngles = new Vector3(0, 0, cameraRotation);
+        Vector3 downDirection = -camera.transform.up * gravityStrength;
+        Debug.Log(downDirection);
+        Physics2D.gravity = downDirection;
+        camera.transform.eulerAngles = new Vector3(0, 0, cameraRotation);
         //camera.gameObject.transform.eulerAngles = new Vector3(0, 0, cameraRotation);
         cameraRotated = false;
-    }
-
-    private void turnMap(float angle)
-    {
-        map.transform.RotateAround(camera.transform.position, Vector3.forward, angle * Time.deltaTime);
-    }
-
-    private void shiftTurn(bool clockwise)
-    {
-        Debug.Log(map.transform.localEulerAngles);
-        if (clockwise)
-        {
-            map.transform.RotateAround(pivotPoint.position, Vector3.forward, 90 - (map.transform.localEulerAngles.z % 90));
-        }
-        else
-        {
-            if (map.transform.localEulerAngles.z % 90 == 0)
-            {
-                map.transform.RotateAround(pivotPoint.position, Vector3.forward, -90);
-            }
-            else
-            {
-                map.transform.RotateAround(pivotPoint.position, Vector3.forward, -(map.transform.localEulerAngles.z % 90));
-            }
-        }
-        
     }
 }

@@ -3,131 +3,109 @@
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
-using UnityEngine.UI;
-using TMPro;
 
 namespace Game.Jam
 {
     public class NetworkManager : MonoBehaviourPunCallbacks
     {
-        public TextMeshProUGUI GameStatusText;
-        public TextMeshProUGUI PlayerStatusText;
-        public TextMeshProUGUI PlayerCountText;
-        public GameObject StartButton;
+        public ButtonTextColor ForceStart;
+        public WaitingText GameStatusText;
         public string GameVersion = "1.0";
+        public byte MaxPlayers = 2;
 
-        public int MaxPlayers = 2;
 
         void Awake()
         {
-            //4 
             PhotonNetwork.AutomaticallySyncScene = true;
         }
 
-        // Start is called before the first frame update
         void Start()
         {
-            GameStatusText.text = "";
-
-            StartButton.SetActive(false);
-
+            ForceStart.SetEnabled(false);
             ConnectToPhoton();
         }
 
-        public void ConnectToPhoton()
+
+        private void ConnectToPhoton()
         {
-            GameStatusText.text = "Connecting...";
-            PhotonNetwork.GameVersion = GameVersion;
-            PhotonNetwork.ConnectUsingSettings();
+            if (!PhotonNetwork.IsConnected)
+            {
+                GameStatusText.SetText("Connecting", true);
+                PhotonNetwork.GameVersion = GameVersion;
+                PhotonNetwork.ConnectUsingSettings();
+            }
+            else
+            {
+                OnConnectedToMaster();
+            }
         }
 
-        public void JoinRoom()
+        private void JoinRoom()
         {
             if (PhotonNetwork.IsConnected)
             {
-                StartButton.SetActive(false);
-                GameStatusText.text = "Searching for room...";
+                GameStatusText.SetText("Searching for room", true);
                 PhotonNetwork.JoinRandomRoom();
             }
         }
 
+        public void TryStarting()
+        {
+
+            if (PhotonNetwork.CurrentRoom.PlayerCount >= MaxPlayers)
+            {
+                GameStatusText.SetText("Starting", true);
+                if (PhotonNetwork.IsMasterClient)
+                {
+                    PhotonNetwork.LoadLevel("Instructions");
+                }
+            }
+        }
+
+        public override void OnJoinedRoom()
+        {
+            Debug.Log("Room Joined");
+            GameStatusText.SetText("Waiting for Players", true);
+            TryStarting();
+
+
+        }
+        public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
+        {
+            base.OnPlayerEnteredRoom(newPlayer);
+            TryStarting();
+        }
         public override void OnJoinRandomFailed(short returnCode, string message)
         {
             RoomOptions roomOptions = new RoomOptions();
-            roomOptions.MaxPlayers = 2;
+            roomOptions.MaxPlayers = MaxPlayers;
 
             PhotonNetwork.CreateRoom(null, roomOptions);
         }
 
-        public void StartGame()
+        public void StartSolo()
         {
-            // 5
-            if (PhotonNetwork.CurrentRoom.PlayerCount == MaxPlayers)
+            if (PhotonNetwork.IsMasterClient)
             {
-                if (PhotonNetwork.IsMasterClient)
-                {
-                    PhotonNetwork.LoadLevel("Multiplayer");
-                }
-            }
-            else
-            {
-                GameStatusText.text = $"Minimum {MaxPlayers} Players required to Start!";
+                PhotonNetwork.LoadLevel("Instructions");
             }
         }
 
         // Photon Methods
-        public override void OnConnected()
+        public override void OnConnectedToMaster()
         {
-            // 1
             base.OnConnected();
-            // 2
-            GameStatusText.text = "Connected to Servers!";
-            GameStatusText.color = Color.green;
-            StartButton.SetActive(true);
+            GameStatusText.SetText("Joining Room", true);
+            ForceStart.SetEnabled(true);
+            JoinRoom();
         }
 
         public override void OnDisconnected(DisconnectCause cause)
         {
-            Debug.LogError("Disconnected. Please check your Internet connection.");
-            GameStatusText.text = "Disconnected. Please check your Internet connection.";
-        }
-        private void RefreshRoomStats()
-        {
-            PlayerCountText.text = $"{PhotonNetwork.CurrentRoom.PlayerCount }/{MaxPlayers} Players";
-            GameStatusText.text = "Waiting for Players";
-
-            if (PhotonNetwork.IsMasterClient)
-            {
-                PlayerStatusText.text = "Leader";
-            }
-            else
-            {
-                PlayerStatusText.text = "Member";
-            }
-
-            if (PhotonNetwork.CurrentRoom.PlayerCount >= MaxPlayers)
-            {
-                GameStatusText.text = "Starting";
-                StartGame();
-            }
-        }
-
-        public override void OnPlayerEnteredRoom(Photon.Realtime.Player newPlayer)
-        {
-            base.OnPlayerEnteredRoom(newPlayer);
-            RefreshRoomStats();
-        }
-
-        public override void OnPlayerLeftRoom(Photon.Realtime.Player newPlayer)
-        {
-            base.OnPlayerLeftRoom(newPlayer);
-            RefreshRoomStats();
+            base.OnDisconnected(cause);
+            GameStatusText.SetText("Disconnected. Please check your Internet connection.", false);
         }
 
 
-        public override void OnJoinedRoom()
-        {
-            RefreshRoomStats();
-        }
     }
 }
